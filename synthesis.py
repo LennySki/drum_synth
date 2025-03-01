@@ -10,4 +10,8 @@ def generate_sine_wave(frequency, duration, sample_rate=44100):
 
     wave = (wave * 32767).astype(np.int16)
 
-    return wave 
+    #play sound
+    play_obj = sa.play_buffer(wave, 1, 2, sample_rate)
+    play_obj.wait_done() #Wait for playback to finish
+
+    return wave  #Still return the wave if we need it later
